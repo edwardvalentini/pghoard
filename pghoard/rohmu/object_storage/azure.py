@@ -6,7 +6,7 @@ See LICENSE for details
 """
 import dateutil.parser
 import time
-from azure.storage import BlobService  # pylint: disable=no-name-in-module, import-error
+from azure.storage import BlockBlobService  # pylint: disable=no-name-in-module, import-error
 from .base import BaseTransfer
 
 
