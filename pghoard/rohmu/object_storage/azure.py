@@ -6,7 +6,7 @@ See LICENSE for details
 """
 import dateutil.parser
 import time
-from azure.storage import BlockBlobService  # pylint: disable=no-name-in-module, import-error
+from azure.storage.blob import BlockBlobService  # pylint: disable=no-name-in-module, import-error
 from .base import BaseTransfer
 
 
@@ -18,7 +18,7 @@ class AzureTransfer(BaseTransfer):
         self.account_name = account_name
         self.account_key = account_key
         self.container_name = container_name
-        self.conn = BlobService(account_name=self.account_name, account_key=self.account_key)
+        self.conn = BlockBlobService(account_name=self.account_name, account_key=self.account_key)
         self.container = self.get_or_create_container(self.container_name)
         self.log.debug("AzureTransfer initialized")
         # XXX: AzureTransfer isn't actively tested and hasn't its error handling is probably lacking
