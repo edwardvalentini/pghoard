@@ -76,12 +76,12 @@ class AzureTransfer(BaseTransfer):
 
     def store_file_from_memory(self, key, memstring, metadata=None):
         key = self.format_key_for_backend(key)
-        self.conn.put_block_blob_from_bytes(self.container_name, key, memstring,
+        self.conn.create_blob_from_bytes(self.container_name, key, memstring,
                                             x_ms_meta_name_values=self.sanitize_metadata(metadata))
 
     def store_file_from_disk(self, key, filepath, metadata=None, multipart=None):
         key = self.format_key_for_backend(key)
-        self.conn.put_block_blob_from_path(self.container_name, key, filepath,
+        self.conn.create_blob_from_path(self.container_name, key, filepath,
                                            x_ms_meta_name_values=self.sanitize_metadata(metadata))
 
     def get_or_create_container(self, container_name):
