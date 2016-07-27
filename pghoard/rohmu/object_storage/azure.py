@@ -23,7 +23,7 @@ class AzureTransfer(BaseTransfer):
         self.container = self.get_or_create_container(self.container_name)
         self.log.debug("AzureTransfer initialized")
         # XXX: AzureTransfer isn't actively tested and hasn't its error handling is probably lacking
-        self.log.warning("AzureTransfer is experimental and has not been thoroughly tested")
+        #self.log.warning("AzureTransfer is experimental and has not been thoroughly tested")
 
     def get_metadata_for_key(self, key):
         key = self.format_key_for_backend(key)

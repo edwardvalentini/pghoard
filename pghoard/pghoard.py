@@ -277,7 +277,7 @@ class PGHoard:
         for entry in results:
             # drop path from resulting list and convert timestamps
             entry["name"] = os.path.basename(entry["name"])
-            entry["metadata"]["start-time"] = dateutil.parser.parse(entry["metadata"]["start-time"])
+            entry["metadata"]["start-time"] = dateutil.parser.parse(entry["last_modified"])
 
         results.sort(key=lambda entry: entry["metadata"]["start-time"])
         return results
