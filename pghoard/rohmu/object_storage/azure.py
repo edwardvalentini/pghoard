@@ -7,6 +7,7 @@ See LICENSE for details
 import dateutil.parser
 import time
 from azure.storage.blob import BlockBlobService  # pylint: disable=no-name-in-module, import-error
+from azure.storage.blob import ContentSettings
 from .base import BaseTransfer
 
 
@@ -81,8 +82,8 @@ class AzureTransfer(BaseTransfer):
 
     def store_file_from_disk(self, key, filepath, metadata=None, multipart=None):
         key = self.format_key_for_backend(key)
-        self.conn.create_blob_from_path(self.container_name, key, filepath,
-                                           x_ms_meta_name_values=self.sanitize_metadata(metadata))
+        self.conn.create_blob_from_path(self.container_name, key, filepath,None)
+                                        #    x_ms_meta_name_values=self.sanitize_metadata(metadata))
 
     def get_or_create_container(self, container_name):
         start_time = time.time()
