@@ -42,7 +42,7 @@ class AzureTransfer(BaseTransfer):
         result = []
         for item in items:
             result.append({
-                "last_modified": dateutil.parser.parse(item.properties.last_modified),
+                "last_modified": item.properties.last_modified.isoformat(),
                 "metadata": item.metadata,
                 "name": self.format_key_from_backend(item.name),
                 "size": item.properties.content_length,
